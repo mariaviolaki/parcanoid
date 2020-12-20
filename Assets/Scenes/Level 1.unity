@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 733723799}
   - component: {fileID: 733723802}
   - component: {fileID: 733723801}
+  - component: {fileID: 733723803}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Untagged
@@ -392,7 +393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733723798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.94, y: 0.603, z: 0}
+  m_LocalPosition: {x: 8.08, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -435,6 +436,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &733723803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733723798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d00cda133afc85b41b590411cb74c43a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenWidthUnits: 16
 --- !u!1 &846674368
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846674368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.21, y: 5.01, z: 0}
+  m_LocalPosition: {x: 5, y: 5.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
