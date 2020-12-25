@@ -6,7 +6,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     // Configuration parameters
-    [SerializeField] Paddle paddle;
+    [SerializeField] Paddle paddle = default;
     [SerializeField] float xVelocity = 2f;
     [SerializeField] float yVelocity = 15f;
 
