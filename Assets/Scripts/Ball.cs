@@ -14,9 +14,13 @@ public class Ball : MonoBehaviour
     float distanceToPaddle = 0;
     bool hasStarted = false;
 
+    // Cached component references
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         FindDistanceToPaddle();
     }
 
@@ -55,6 +59,15 @@ public class Ball : MonoBehaviour
         {
             hasStarted = true;
             GetComponent<Rigidbody2D>().velocity = new Vector2(xVelocity, yVelocity);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (hasStarted)
+        {
+            // Play the entire audio clip
+            audioSource.PlayOneShot(audioSource.clip);
         }
     }
 }

@@ -2100,6 +2100,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Play Space
       objectReference: {fileID: 0}
+    - target: {fileID: 5790083360319366263, guid: 9813725ef351a9a4b9af4379c061c441,
+        type: 3}
+      propertyPath: ballSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9813725ef351a9a4b9af4379c061c441, type: 3}
 --- !u!4 &854747500 stripped
