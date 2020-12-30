@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    // Parameters
+    // Configuation parameters
     [SerializeField] AudioClip breakSound = default;
 
     // Cached references
     Level level;
+    GameStatus gameStatus;
 
     private void Start()
     {
         level = FindObjectOfType<Level>();
+        gameStatus = FindObjectOfType<GameStatus>();
         level.AddBlock();
     }
 
@@ -26,6 +28,7 @@ public class Block : MonoBehaviour
         // Keep playing sound effect even after the block is destroyed
         AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position, 0.1f);
         level.RemoveBlock();
+        gameStatus.IncreaseScore();
         Destroy(gameObject);
     }
 }
