@@ -13,6 +13,21 @@ public class GameStatus : MonoBehaviour
     // State
     int currentScore = 0;
 
+    private void Awake()
+    {
+        int gameStatusCount = FindObjectsOfType<GameStatus>().Length;
+        // Check if any other GameStatus objects are already loaded
+        if (gameStatusCount > 1)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     private void Start()
     {
         updateScoreText();
