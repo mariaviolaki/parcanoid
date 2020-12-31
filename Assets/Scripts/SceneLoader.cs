@@ -7,6 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void LoadFirstScene()
     {
+        FindObjectOfType<GameSession>().ResetGame();
         SceneManager.LoadScene(0);
     }
 
