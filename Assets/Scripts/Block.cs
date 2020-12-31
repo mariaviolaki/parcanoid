@@ -12,24 +12,30 @@ public class Block : MonoBehaviour
 
     // Cached references
     Level level;
-    GameSession gameStatus;
 
     private void Start()
     {
-        level = FindObjectOfType<Level>();
-        gameStatus = FindObjectOfType<GameSession>();
-        level.AddBlock();
+        CountBreakableBlocks();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // If collision happens more than once, avoid executing the same code
-        if (!isDestroyed)
+        if (!isDestroyed && tag == "Breakable")
         {
             TriggerEffects();
             CalculatePoints();
             DestroyBlock();
         }
+    }
+
+    private void CountBreakableBlocks()
+    {
+        level = FindObjectOfType<Level>();
+
+        // Only keep track of breakable blocks to proceed to the next level
+        if (tag == "Breakable")
+            level.AddBlock();
     }
 
     private void DestroyBlock()
@@ -44,7 +50,7 @@ public class Block : MonoBehaviour
         level.RemoveBlock();
 
         // Add a block's points to the total score
-        gameStatus.IncreaseScore();
+        FindObjectOfType<GameSession>().IncreaseScore();
     }
 
     private void TriggerEffects()
