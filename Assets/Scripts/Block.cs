@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,9 +10,14 @@ public class Block : MonoBehaviour
     // Configuation parameters
     [SerializeField] AudioClip breakSound = default;
     [SerializeField] GameObject sparklesVFX = default;
+    [SerializeField] int maxHits = 1;
+    [SerializeField] Sprite[] hitSprites = default;
 
     // Cached references
     Level level;
+
+    // State variables
+    [SerializeField] int currentHits = 0;
 
     private void Start()
     {
@@ -23,10 +29,28 @@ public class Block : MonoBehaviour
         // If collision happens more than once, avoid executing the same code
         if (!isDestroyed && tag == "Breakable")
         {
+            HandleHits();
+        }
+    }
+
+    private void HandleHits()
+    {
+        currentHits++;
+        if (currentHits >= maxHits)
+        {
             TriggerEffects();
             CalculatePoints();
             DestroyBlock();
         }
+        else
+        {
+            ShowNextHitSprite();
+        }
+    }
+
+    private void ShowNextHitSprite()
+    {
+        GetComponent<SpriteRenderer>().sprite = hitSprites[currentHits - 1];
     }
 
     private void CountBreakableBlocks()
