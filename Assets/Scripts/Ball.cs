@@ -8,7 +8,8 @@ public class Ball : MonoBehaviour
     // Configuration parameters
     [SerializeField] Paddle paddle = default;
     [SerializeField] float xVelocity = 2f;
-    [SerializeField] float yVelocity = 15f;
+    [SerializeField] float yVelocity = 12f;
+    [SerializeField] float randomFactor = 1f;
 
     // State
     float distanceToPaddle = 0;
@@ -16,11 +17,13 @@ public class Ball : MonoBehaviour
 
     // Cached component references
     AudioSource audioSource;
+    Rigidbody2D rigidBody;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        rigidBody = GetComponent<Rigidbody2D>();
         FindDistanceToPaddle();
     }
 
@@ -58,7 +61,7 @@ public class Ball : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             hasStarted = true;
-            GetComponent<Rigidbody2D>().velocity = new Vector2(xVelocity, yVelocity);
+            rigidBody.velocity = new Vector2(xVelocity, yVelocity);
         }
     }
 
@@ -66,8 +69,18 @@ public class Ball : MonoBehaviour
     {
         if (hasStarted)
         {
+            TweakVelocity();
+
             // Play the entire audio clip
             audioSource.PlayOneShot(audioSource.clip);
         }
+    }
+
+    // Add some randomness to the ball's velocity
+    private void TweakVelocity()
+    {
+        float randomX = UnityEngine.Random.Range(0f, randomFactor);
+        float randomY = UnityEngine.Random.Range(0f, randomFactor);
+        rigidBody.velocity += new Vector2(randomX, randomY);
     }
 }

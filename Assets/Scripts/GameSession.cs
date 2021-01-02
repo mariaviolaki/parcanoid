@@ -6,7 +6,7 @@ using TMPro;
 public class GameSession : MonoBehaviour
 {
     // Configuration parameters
-    [Range(0.1f, 5f)] [SerializeField] float gameSpeed = 0.7f;
+    [Range(0.1f, 5f)] [SerializeField] float gameSpeed = 0.6f;
     [SerializeField] int pointsPerBlock = 100;
     [SerializeField] TextMeshProUGUI scoreText = default;
 
