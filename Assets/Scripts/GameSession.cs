@@ -9,6 +9,7 @@ public class GameSession : MonoBehaviour
     [Range(0.1f, 5f)] [SerializeField] float gameSpeed = 0.6f;
     [SerializeField] int pointsPerBlock = 100;
     [SerializeField] TextMeshProUGUI scoreText = default;
+    [SerializeField] bool isAutoEnabled = false;
 
     // State
     int currentScore = 0;
@@ -54,5 +55,10 @@ public class GameSession : MonoBehaviour
     private void UpdateScoreText()
     {
         scoreText.text = currentScore.ToString();
+    }
+
+    public bool IsAutoEnabled()
+    {
+        return isAutoEnabled;
     }
 }

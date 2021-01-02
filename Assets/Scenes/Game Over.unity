@@ -346,6 +346,16 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 3074818084620307002, guid: e1528a309d8dd014bbedf321da57c56e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 626049828}
+    - target: {fileID: 3074818084620307002, guid: e1528a309d8dd014bbedf321da57c56e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadFirstScene
+      objectReference: {fileID: 0}
     - target: {fileID: 3074818084620307004, guid: e1528a309d8dd014bbedf321da57c56e,
         type: 3}
       propertyPath: m_Name
@@ -495,6 +505,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Quit Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170857504292257350, guid: 7b9e2a1ec9a25e442bad9b7a82df1715,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 626049828}
+    - target: {fileID: 1170857504292257350, guid: 7b9e2a1ec9a25e442bad9b7a82df1715,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
       objectReference: {fileID: 0}
     - target: {fileID: 1170857504292257351, guid: 7b9e2a1ec9a25e442bad9b7a82df1715,
         type: 3}

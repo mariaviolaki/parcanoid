@@ -9,8 +9,20 @@ public class Paddle : MonoBehaviour
     float minXUnits;
     float maxXUnits;
 
+    // Cached references
+    GameSession gameSession;
+    Ball ball;
+
     // Start is called before the first frame update
     void Start()
+    {
+        gameSession = FindObjectOfType<GameSession>();
+        ball = FindObjectOfType<Ball>();
+        SetScreenBounds();
+    }
+
+    // Make paddle fit exactly inside the screen (x-axis)
+    private void SetScreenBounds()
     {
         // Get width of the paddle
         float width = GetComponent<SpriteRenderer>().bounds.size.x;
@@ -22,11 +34,21 @@ public class Paddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Find current position of mouse in the window and store x axis
-        float xPos = Input.mousePosition.x / Screen.width * screenWidthUnits;
         // Limit value range in x axis so that the paddle stays inside the screen
-        float limitedXPos = Mathf.Clamp(xPos, minXUnits, maxXUnits);
+        float limitedXPos = Mathf.Clamp(GetXPos(), minXUnits, maxXUnits);
         // Set paddle's position to the new x and the current y
         transform.position = new Vector2(limitedXPos, transform.position.y);
+    }
+
+    private float GetXPos()
+    {
+        // Find current position of mouse in the window and store x axis
+        float mousePos = Input.mousePosition.x / Screen.width * screenWidthUnits;
+
+        // If autoplay is on, return the ball's x position instead of the mouse's
+        if (gameSession.IsAutoEnabled())
+            return ball.transform.position.x;
+        else
+            return mousePos;
     }
 }
