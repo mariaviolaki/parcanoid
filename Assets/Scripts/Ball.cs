@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
     [SerializeField] Paddle paddle = default;
     [SerializeField] float xVelocity = 2f;
     [SerializeField] float yVelocity = 12f;
-    [SerializeField] float randomFactor = 1f;
+    [SerializeField] float randomFactor = 2f;
 
     // State
     float distanceToPaddle = 0;
